@@ -4,7 +4,7 @@
 
 import os
 import sys
-# import json
+import json
 import traceback
 # import base64
 
@@ -73,10 +73,12 @@ if __name__ == "__main__":
                 res[playlist['Name']] = parser.result.queryTree
                 with open(os.path.join(outputDirectory, filename), "w") as fs:
                     fs.write(playlist['Name'])
-                    fs.write("\r\n\r\n")
-                    fs.write(parser.result.output)
-                    # fs.write(parser.result.query)
-                    # fs.write(json.dumps(parser.result.queryTree, indent=2))
+                    fs.write("\r\n")
+                    # fs.write(parser.result.output)
+                    fs.write("\r\nAs 'query':\r\n")
+                    fs.write(parser.result.query)
+                    fs.write("\r\n\r\nAs JSON:\r\n")
+                    fs.write(json.dumps(parser.result.queryTree, indent=2))
                     # fs.write(parser.result.ignore)
                     # fs.write("\r\n")
                     # fs.write(base64.standard_b64encode(playlist['Smart Info']).decode("utf-8"))
